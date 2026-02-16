@@ -1,9 +1,12 @@
 var { DataTypes, Model } = require("sequelize");
 var { sequelize } = require("../config/database");
 
-class Activity extends Model {};
-class User extends Model {};
-class Asset extends Model {};
+class Activity extends Model { };
+class User extends Model { };
+class Asset extends Model { };
+class Newsletter extends Model { };
+class Contact extends Model { };
+class Testimonial extends Model { };
 
 Activity.init({
 	name: DataTypes.TEXT,
@@ -28,6 +31,22 @@ Asset.init({
 	url: DataTypes.TEXT
 }, { sequelize, modelName: "asset" });
 
+Newsletter.init({
+	email: DataTypes.TEXT
+}, { sequelize, modelName: "newsletter" });
+
+Contact.init({
+	name: DataTypes.TEXT,
+	email: DataTypes.TEXT,
+	message: DataTypes.TEXT
+}, { sequelize, modelName: "contact" });
+
+Testimonial.init({
+	content: DataTypes.TEXT,
+	name: DataTypes.TEXT,
+	occupation: DataTypes.TEXT
+}, { sequelize, modelName: "testimonial" });
+
 User.belongsToMany(Activity, { through: "roster" });
 Activity.belongsToMany(User, { through: "roster" });
 
@@ -38,15 +57,18 @@ Activity.belongsTo(Asset, { foreignKey: "assetId" });
 Asset.hasOne(Activity, { foreignKey: "assetId" });
 
 sequelize.sync({ force: false })
-	.then(function() {
+	.then(function () {
 		console.log("Tabels created");
 	})
-	.catch(function(error) {
+	.catch(function (error) {
 		console.error(error);
 	});
 
 module.exports = {
 	Activity,
 	User,
-	Asset
+	Asset,
+	Newsletter,
+	Contact,
+	Testimonial,
 };

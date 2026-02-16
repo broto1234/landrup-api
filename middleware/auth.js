@@ -18,7 +18,7 @@ function isRelevantUser(req, res, next) {
 	let reqId = req.params.id;
 	let token = req.headers.authorization.split(" ")[1];
 	let decodedToken = verify(token, process.env.JWT_SECRET);
-	
+
 	if (decodedToken.data.id !== parseInt(reqId)) return res.status(403).end();
 
 	if (decodedToken.data.exp < Date.now()) return res.status(403).end();
@@ -27,16 +27,16 @@ function isRelevantUser(req, res, next) {
 }
 
 async function isInstructor(req, res, next) {
-	let reqId = req.params.id;
+	//let reqId = req.params.id;
 	let token = req.headers.authorization.split(" ")[1];
 	let decodedToken = verify(token, process.env.JWT_SECRET);
 
-	if (decodedToken.data.id !== parseInt(reqId)) return res.status(403).end();
+	//if (decodedToken.data.id !== parseInt(reqId)) return res.status(403).end();
 
 	if (decodedToken.data.exp < Date.now()) return res.status(403).end();
 
 	try {
-		let user = await User.findByPk(parseInt(reqId));
+		let user = await User.findByPk(parseInt(decodedToken.data.id));
 		if (user.role !== "instructor") return res.status(403).end();
 	} catch (error) {
 		console.log(error);
