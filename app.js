@@ -13,7 +13,7 @@ testConnection();
 app.use(cors({
   origin: [
     "http://localhost:3000",                  // local Next.js dev
-    "https://your-frontend.vercel.app"       // deployed frontend
+    "https://landrup-dans-five.vercel.app"       // deployed frontend
   ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true

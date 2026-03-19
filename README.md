@@ -15,6 +15,8 @@ npm start
 ## Documentation
 http://localhost:4000
 
+https://landrup-api-hlp6.onrender.com/
+
 ### Predefined Users
 There are 10 predefined users in the API:
 

@@ -29,7 +29,7 @@ async function createSingleActivity(req, res, next) {
 	try {
 		let file = saveFile(req.files.file);
 		let asset = await Asset.create({
-			url: "http://localhost:4000/file-bucket/" + file
+			url: `${process.env.BASE_URL}/file-bucket/${file}`
 		});
 		let activityData = await Activity.create({
 			name: req.fields.name,
@@ -56,7 +56,7 @@ async function updateSingleActivity(req, res, next) {
 		try {
 			let file = saveFile(req.files.file);
 			let asset = await Asset.create({
-				url: "http://localhost:4000/file-bucket/" + file
+				url: `${process.env.BASE_URL}/file-bucket/${file}`
 			});
 			await Activity.update({ assetId: parseInt(asset.id) }, { where: { id } });
 		} catch (error) {
