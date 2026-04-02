@@ -1,5 +1,5 @@
 {
-  "name": "general-api",
+  "name": "general-purpose-rest-api",
   "version": "0.0.0",
   "description": "A general purpose RESTful web-API written with Express and MySQL",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs": "cd ./docs && npx insomnia-documenter --config ./rest-api.json"
   },
-  "author": "Landup ApS",
+  "author": "Brian Emilius <be@rts.dk>",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
