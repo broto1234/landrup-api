@@ -6,7 +6,6 @@ async function createSingleAsset(req, res, next) {
 		let file = saveFile(req.files.file);
 		let asset = await Asset.create({
 			url: `${process.env.BASE_URL}/file-bucket/${file}`
-			// url: "http://localhost:4000/file-bucket/" + file
 		});
 		res.json(asset);
 	} catch (error) {
