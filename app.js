@@ -11,7 +11,6 @@ testConnection();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://landrup-api-h4b5.onrender.com/"
     // "https://your-frontend.vercel.app"
   ]
 }));
